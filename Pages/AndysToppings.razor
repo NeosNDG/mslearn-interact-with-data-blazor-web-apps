@@ -1,0 +1,14 @@
+﻿@page "/pizzas-toppings"
+
+<h1>Our Latest Pizzas and Topping</h1>
+
+<AndysPizzaChild PizzaName="Hawaiian" PizzaDescription="The one with pineapple" />
+<AndysPizzaChild PizzaName="Andys" />
+
+<AndysToppingsChild Topping="@(new Topping() { Name = "Chilli Sauce", Price = 1.50M })" />
+
+@* Not working
+<CascadingValue Name="DealName" Value="Throwback Thursday">
+    <AndysDealChild />
+    <!-- Any descendant component rendered here will be able to access the cascading value. -->
+</CascadingValue>*@
