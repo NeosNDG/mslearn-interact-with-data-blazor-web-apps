@@ -29,7 +29,7 @@ public static class SeedData
                 BasePrice = 10.50m,
                 ImageUrl = "img/pizzas/pepperoni.jpg",
             },
-            new PizzaSpecial()
+            new() //new simplified version of new PizzaSpecial()
             {
                 Id = 4,
                 Name = "Buffalo chicken",
@@ -37,7 +37,7 @@ public static class SeedData
                 BasePrice = 12.75m,
                 ImageUrl = "img/pizzas/meaty.jpg",
             },
-            new PizzaSpecial()
+            new()
             {
                 Id = 5,
                 Name = "Mushroom Lovers",
@@ -45,7 +45,7 @@ public static class SeedData
                 BasePrice = 11.00m,
                 ImageUrl = "img/pizzas/mushroom.jpg",
             },
-            new PizzaSpecial()
+            new()
             {
                 Id = 7,
                 Name = "Veggie Delight",
@@ -53,7 +53,7 @@ public static class SeedData
                 BasePrice = 11.50m,
                 ImageUrl = "img/pizzas/salad.jpg",
             },
-            new PizzaSpecial()
+            new()
             {
                 Id = 8,
                 Name = "Margherita",
@@ -61,6 +61,15 @@ public static class SeedData
                 BasePrice = 9.99m,
                 ImageUrl = "img/pizzas/margherita.jpg",
             },
+            new()
+            {
+                Id = 9,
+                Name = "Margherita Family Size",
+                Description = "24\" of pure tomatoes and basil",
+                BasePrice = 14.99m,
+                ImageUrl = "img/pizzas/margherita.jpg",
+                FixedSize = 24
+            }
         };
         db.Specials.AddRange(specials);
         db.SaveChanges();

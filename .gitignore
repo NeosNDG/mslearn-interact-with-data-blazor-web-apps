@@ -269,8 +269,8 @@ ServiceFabricBackup/
 *.ndf
 
 #SQLite database files
-*.db
-*.db-schm
+pizza.db
+*.db-shm
 *.db-wal
 
 # Business Intelligence projects
