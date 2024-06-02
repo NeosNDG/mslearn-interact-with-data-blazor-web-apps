@@ -1,4 +1,5 @@
 using BlazingPizza.Data;
+using BlazingPizza.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 // Added by me: HTTP Client so that we can make HTTP requests (to the "specials" Controller API)
-// Added by me: Sqlite with the PizzaStoreContext so that we can use a database (create if not exists)
 builder.Services.AddHttpClient();
+// Added by me: Sqlite with the PizzaStoreContext vis Microsoft.EntityFrameworkCore so that we can use a database (create if not exists)
 builder.Services.AddSqlite<PizzaStoreContext>("Data Source=pizza.db");
+
+// My Services Class added to the container as a service so that we can use it in our Blazor components (e.g. Index.razor)
+builder.Services.AddScoped<OrderState>();
 
 var app = builder.Build();
 
