@@ -1,0 +1,16 @@
+@page "/texttransformer"
+@using BlazingPizza.Data;
+
+<div class="main">
+    <h1>Text Transformer - Parent</h1>
+
+    @* not working but I can´t figure out why *@
+    <AndysEventCallBack OnKeypressCallback="@TransformText" />
+</div>
+
+@code {
+    private void TransformText(KeyTransformation k)
+    {
+        k.TransformedKey = k.Key.ToUpper();
+    }
+}

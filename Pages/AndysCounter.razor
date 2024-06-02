@@ -1,0 +1,50 @@
+@page "/counter"
+@inject IJSRuntime JS
+
+<div class="main">
+    <h1>Counter</h1>
+
+    <p id="currentCount">Current count: @currentCount</p>
+
+    <div @onclick="HandleDivClick">
+        <button class="btn btn-primary" @onclick='mouseEvent => HandleClick(mouseEvent, "Hello")'>Click me</button>
+
+        <p> <input value=@data @onkeypress="ProcessKeyPress" @onkeypress:preventDefault /> </p>
+    </div>
+</div>
+
+@code {
+    private async Task HandleDivClick()
+    {
+        await JS.InvokeVoidAsync("alert", "Div click");
+    }
+    private int currentCount = 0;
+
+    private async Task HandleClick(MouseEventArgs e, string msg)
+    {
+        if (e.CtrlKey) // Ctrl key pressed as well
+        {
+            await JS.InvokeVoidAsync("alert", msg);
+            currentCount += 5;
+        }
+        else
+        {
+            currentCount++;
+        }
+    }
+
+
+    private string data;
+
+    private async Task ProcessKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "@")
+        {
+            await JS.InvokeVoidAsync("alert", "You pressed @");
+        }
+        else
+        {
+            data += e.Key.ToUpper();
+        }
+    }
+}

@@ -19,10 +19,10 @@ public class OrdersController : Controller
     public async Task<ActionResult<List<OrderWithStatus>>> GetOrders()
     {
         var orders = await _db.Orders
- 	    .Include(o => o.Pizzas).ThenInclude(p => p.Special)
- 	    .Include(o => o.Pizzas).ThenInclude(p => p.Toppings).ThenInclude(t => t.Topping)
- 	    .OrderByDescending(o => o.CreatedTime)
- 	    .ToListAsync();
+ 	        .Include(o => o.Pizzas).ThenInclude(p => p.Special)
+ 	        .Include(o => o.Pizzas).ThenInclude(p => p.Toppings).ThenInclude(t => t.Topping)
+ 	        .OrderByDescending(o => o.CreatedTime)
+ 	        .ToListAsync();
 
         return orders.Select(o => OrderWithStatus.FromOrder(o)).ToList();
     }
